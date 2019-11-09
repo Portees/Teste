@@ -12,8 +12,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
         <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+        <script src="js/navbar-ontop.js"></script>
     </head>
     <body>
+        <%@include  file="/header.jsp" %>
         <div class="py-5 text-center" style="	background-image: url(https://pingendo.com/site-assets/cover.jpg);	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
             <div class="container">
                 <div class="row" style="">
@@ -33,5 +35,6 @@
                 </div>
             </div>
         </div>
+        <%@include  file="/footer.jsp" %>
     </body>
 </html>

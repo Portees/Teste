@@ -7,6 +7,7 @@ package com.ifgoiano.servlet;
 
 import com.ifgoiano.control.UsuariosJpaController;
 import com.ifgoiano.model.Usuarios;
+import com.ifgoiano.security.SecurityCrypto;
 import java.io.IOException;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -15,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,24 +39,25 @@ public class CadastroServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("userPU");
         UsuariosJpaController usrController = new UsuariosJpaController(emf);
+        HttpSession session = request.getSession();
 
         try {
-            String nome = request.getParameter("nome");
-            String email = request.getParameter("email");
-            String password = request.getParameter("senha");
+            var nome = request.getParameter("nome");
+            var email = request.getParameter("email");
+            var password = request.getParameter("senha");
 
             Usuarios user = new Usuarios();
             
             user.setNome(nome);
-            user.setSenha(password);
+            user.setSenha(SecurityCrypto.encrypt(password));
             user.setEmail(email);
 
             usrController.create(user);
             response.sendRedirect("index.html");
 
         } catch (Exception ex) {
-            throw ex;
-            //response.sendRedirect("Login.jsp");
+            session.setAttribute("erro", ex);
+            response.sendRedirect("error.jsp");
         }
     }
 
