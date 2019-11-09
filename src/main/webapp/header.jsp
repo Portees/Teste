@@ -26,7 +26,23 @@
                             <a class="nav-link" href="#who">Who</a>
                         </li>
                     </ul>
+                    <%
+                        if (session.getAttribute("user") == null) {
+                    %>
                     <a class="btn navbar-btn btn-outline-light" href="Login.jsp">Login</a>
+                    <%
+                    } else {
+                    %>
+                    <div class="btn-group" >
+                        <button class="btn btn-light dropdown-toggle" data-toggle="dropdown"> ${user.nome} </button>
+                        <div class="dropdown-menu"> <a class="dropdown-item" href="index.jsp">Acessar dados</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item fa fa-sign-out" href="Logout"> Sair</a>
+                        </div>
+                    </div>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
         </nav>

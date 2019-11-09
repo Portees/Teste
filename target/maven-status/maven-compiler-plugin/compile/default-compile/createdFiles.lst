@@ -25,5 +25,6 @@ com\ifgoiano\model\Usuarios.class
 com\ifgoiano\control\PagamentoJpaController.class
 com\ifgoiano\control\PassagemJpaController.class
 com\ifgoiano\security\JavaMailApp$1.class
+com\ifgoiano\servlet\LoginServlet.class
 com\ifgoiano\servlet\CadastroServlet.class
 com\ifgoiano\security\Token$salt.class

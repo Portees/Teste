@@ -21,11 +21,12 @@
                 <div class="row" >
                     <div class="mx-auto col-md-6 col-10 bg-white p-5">
                         <h1 class="mb-4">Login</h1>
-                        <form action="">
-                            <div class="form-group"> <input type="email" class="form-control" placeholder="Email" id="nome"> </div>
-                            <div class="form-group mb-3"> <input type="password" class="form-control" id="senha" placeholder="Senha"> <small class="form-text text-muted text-right">
-                                    <a href="Cadastro.jsp"> Cadastrar-se</a>
-                                </small> </div> <button type="submit" class="btn btn-primary">Login</button>
+                        <form action="LoginServlet" method="POST">
+                            <div class="form-group"> <input type="email" class="form-control" placeholder="Digite o e-mail" id="email" name="email"> </div>
+                            <div class="form-group mb-3"> <input type="password" class="form-control" id="password" name="password" placeholder="Digite a senha">
+                                <small class="form-text text-muted text-right"><a href="Cadastro.jsp"> Cadastrar-se</a></small>
+                                <small class="form-text text-muted text-right "> <p class="text-danger">${erroLogin}</p></small>
+                            </div> <button type="submit" class="btn btn-primary">Login</button>
                         </form>
                     </div>
                 </div>

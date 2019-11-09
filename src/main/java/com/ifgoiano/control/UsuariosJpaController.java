@@ -9,6 +9,7 @@ import com.ifgoiano.control.exceptions.NonexistentEntityException;
 import com.ifgoiano.model.Usuarios;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
@@ -29,6 +30,28 @@ public class UsuariosJpaController implements Serializable {
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
+    }
+
+    public Usuarios findByEmail(String email) {
+        var em = getEntityManager();
+        try {
+            var users = findUsuariosEntities();
+            if (email != null && users.size() > 0) {
+                var usr = users.stream()
+                        .filter(user -> user.getEmail().equals(email))
+                        .findFirst();
+                if (usr.isPresent()) {
+                    return usr.get();
+                }
+            }
+            return null;
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
     public void create(Usuarios usuarios) {
@@ -134,5 +157,5 @@ public class UsuariosJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }
