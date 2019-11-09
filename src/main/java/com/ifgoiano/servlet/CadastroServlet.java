@@ -44,8 +44,8 @@ public class CadastroServlet extends HttpServlet {
             String password = request.getParameter("senha");
 
             Usuarios user = new Usuarios();
+            
             user.setNome(nome);
-            user.setId(Integer.SIZE);
             user.setSenha(password);
             user.setEmail(email);
 

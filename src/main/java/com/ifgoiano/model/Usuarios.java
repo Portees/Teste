@@ -37,8 +37,7 @@ public class Usuarios implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    //@GeneratedValue(strategy = GenerationType.ALL)
-    //@Basic(optional = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
